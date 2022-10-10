@@ -23,5 +23,9 @@ Output: {"a": 1, "d": 2, "e": 1, "g": 2}
 """
 from typing import Dict, List
 
+
 def transform(legacy_data: Dict[int, List[str]]) -> Dict[str, int]:
-    ...
+    newdict = {}
+    for i in legacy_data:
+        newdict.update(legacy_data.fromkeys(map(str.lower, legacy_data[i]), i))
+    return newdict
