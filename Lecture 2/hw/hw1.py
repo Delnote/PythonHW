@@ -17,8 +17,11 @@ Input: [2,2,1,1,1,2,2]
 Output: 2, 1
 
 """
-from typing import List, Tuple
+from statistics import mode
+from typing import List, Tuple, Counter
 
 
 def major_and_minor_elem(inp: List) -> Tuple[int, int]:
-    ...
+    maxvalue = (mode(inp))
+    minvalue = Counter(inp).most_common()[-1][0]
+    return maxvalue, minvalue
