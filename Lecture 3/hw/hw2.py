@@ -10,8 +10,26 @@ val_1 = cache_func(*some)
 val_2 = cache_func(*some)
 assert val_1 is val_2
 """
-from collections.abc import Callable
+from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    ...
+    return cache_wrapper(func)
+
+
+cache_dict = {}
+
+
+def cache_wrapper(func):
+    if func not in cache_dict:
+        cache_dict[func] = {}
+
+    def cached_func(*args):
+        if args in cache_dict[func]:
+            return cache_dict[func][args]
+
+        value = func(*args)
+        cache_dict[func][args] = value
+        return value
+
+    return cached_func
