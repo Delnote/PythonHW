@@ -1,6 +1,9 @@
 import pytest
 
-from hw1 import *
+
+from student import *
+from teacher import *
+from deadlineError import *
 
 
 @pytest.fixture
