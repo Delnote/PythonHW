@@ -1,4 +1,5 @@
 from homework import *
+from result import *
 
 
 class Student:
@@ -6,6 +7,8 @@ class Student:
         self.surname = surname
         self.name = name
 
-    @staticmethod
-    def do_homework(hw: Homework, solution: str):
+    def do_homework(self, hw: Homework, solution: str) -> Result:
         hw.check_deadline()
+        res = Result(self, solution, hw)
+        return res
+
