@@ -37,17 +37,17 @@ def validate_line(line: str) -> bool:
 
 
 def validate_date(date: str) -> bool:
-    return bool(re.match(r"\d{4}-\d{2}-\d{2}", date))
+    date_val = date.rsplit(" ", 1)[-1]
+    return bool(re.match(r"\d{4}-\d{2}-\d{2}", date_val))
 
 
 def check_data(filepath: str, validators: Iterable[Callable]) -> str:
     tp = open('result.txt', 'w')
     with open(filepath) as res:
         for line in res:
-            if validators[1](line):
-                if not validators[0](line.rsplit(" ", 1)[1]):
-                    tp.write(line.replace('\n', '') + " validate_date\n")
-            else:
-                tp.write(line.replace('\n', '') + " validate_line\n")
-        tp.flush()
+            for validate in validators:
+                if not validate(line):
+                    tp.write(line.replace('\n', ' ') + str(validate.__name__) + "\n")
+                    break
+        tp.close()
     return tp.name
