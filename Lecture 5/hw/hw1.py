@@ -6,6 +6,9 @@ class ModifiedDict(dict):
 
 class KeyValueStorage:
 
+    def __new__(cls, file_path):
+        return cls.read_file(file_path)
+
     @classmethod
     def read_file(cls, file_path) -> {}:
         data = {}
@@ -20,7 +23,7 @@ class KeyValueStorage:
         return ModifiedDict(data)
 
 
-data_dict = KeyValueStorage.read_file('task1.txt')
+data_dict = KeyValueStorage('task1.txt')
 print(f'Access by dot notation result -', data_dict.last_name)
 print(f'Access by key in dictionary -', data_dict['name'])
 print(f'Value is converted to integer -', isinstance(data_dict.power, int))
