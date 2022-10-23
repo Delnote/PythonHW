@@ -1,8 +1,18 @@
 # 1. Implement a function that flatten incoming data (non-iterables and elements from iterables) 
 # and returns an iterator
+import sys
+from itertools import count
+from tkinter import _flatten
+
 
 def merge_elems(*elems):
-    pass
+    res = []
+    for el in elems:
+        if isinstance(el, str):
+            res.append(list(el))
+        else:
+            res.append(el)
+    return _flatten(res)
 
 # example input
 a = [1, 2, 3]
@@ -18,8 +28,19 @@ for _ in merge_elems(a, b, c, d):
 # 2. Implement a map-like function that returns an iterator 
 # (extra functionality: if arg function can't be applied, return element as is + text exception)
 
+
 def map_like(fun, *elems):
-    pass
+    res = []
+    for el in elems:
+        try:
+            hasattr(el, '__getitem__')
+            res.append(fun(el))
+        except:
+            res.append('{}: {}'.format(el, sys.exc_info()[1]))
+
+    return res
+    # pass
+
 
 # example input
 a = [1, 2, 3]
