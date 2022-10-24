@@ -1,5 +1,7 @@
-# 1. Implement a function that flatten incoming data (non-iterables and elements from iterables) 
-# and returns an iterator
+# 1. Implement a function that flatten incoming data:
+# non-iterables and elements from iterables (any nesting depth should be supported)
+# function should return an iterator (generator function)
+# don't use third-party libraries
 
 def merge_elems(*elems):
     pass
@@ -15,8 +17,8 @@ for _ in merge_elems(a, b, c, d):
 
 # output: 1 2 3 6 z h a b a 1 2 3 4
 
-# 2. Implement a map-like function that returns an iterator 
-# (extra functionality: if arg function can't be applied, return element as is + text exception)
+# 2. Implement a map-like function that returns an iterator (generator function)
+# extra functionality: if arg function can't be applied, return element as is + text exception
 
 def map_like(fun, *elems):
     pass
