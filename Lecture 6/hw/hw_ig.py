@@ -1,8 +1,6 @@
 # 1. Implement a function that flatten incoming data (non-iterables and elements from iterables) 
 # and returns an iterator
 import sys
-from itertools import count
-from tkinter import _flatten
 
 
 def merge_elems(*elems):
@@ -12,7 +10,17 @@ def merge_elems(*elems):
             res.append(list(el))
         else:
             res.append(el)
-    return _flatten(res)
+    return iter(flatten_data(res))
+
+
+def flatten_data(data):
+    res = ()
+    for elem in data:
+        if isinstance(elem, (tuple, list)):
+            res = res + flatten_data(elem)
+        elif elem is not None:
+            res = res + (elem,)
+    return res
 
 # example input
 a = [1, 2, 3]
