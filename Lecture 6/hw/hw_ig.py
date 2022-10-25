@@ -4,28 +4,20 @@ import sys
 
 
 def merge_elems(*elems):
-    res = []
-    for el in elems:
-        if isinstance(el, str):
-            res.append(list(el))
-        else:
-            res.append(el)
-    yield flatten_data(res)
+    return flatten_data(elems)
 
 
 def flatten_data(data):
-    res = ()
     for elem in data:
         if isinstance(elem, (tuple, list)):
-            res = res + flatten_data(elem)
+            yield from flatten_data(elem)
         elif isinstance(elem, dict):
-            res = res + flatten_data(elem.keys())
-            res = res + flatten_data(elem.values())
+            yield from elem.keys()
+            yield from elem.values()
         elif isinstance(elem, str):
-            res = res + tuple(elem)
+            yield from tuple(elem)
         elif elem is not None:
-            res = res + (elem,)
-    return res
+            yield elem
 
 
 # example input
@@ -37,6 +29,7 @@ e = {1: 2, 3: 4}
 
 for _ in merge_elems(a, b, c, d, e):
     print(_, end=' ')
+print('\n')
 
 # output: 1 2 3 6 z h a b a 1 2 3 4
 # output: 1 2 3 p r i n c e 6 z h a b a 1 2 3 4 1 3 2 4
@@ -46,14 +39,12 @@ for _ in merge_elems(a, b, c, d, e):
 
 
 def map_like(fun, *elems):
-    res = []
     for el in elems:
         try:
             hasattr(el, '__getitem__')
-            res.append(fun(el))
+            yield fun(el)
         except:
-            res.append('{}: {}'.format(el, sys.exc_info()[1]))
-    yield res
+            yield '{}: {}'.format(el, sys.exc_info()[1])
 
 
 # example input
