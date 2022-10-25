@@ -10,7 +10,7 @@ def merge_elems(*elems):
             res.append(list(el))
         else:
             res.append(el)
-    return iter(flatten_data(res))
+    yield flatten_data(res)
 
 
 def flatten_data(data):
@@ -18,20 +18,28 @@ def flatten_data(data):
     for elem in data:
         if isinstance(elem, (tuple, list)):
             res = res + flatten_data(elem)
+        elif isinstance(elem, dict):
+            res = res + flatten_data(elem.keys())
+            res = res + flatten_data(elem.values())
+        elif isinstance(elem, str):
+            res = res + tuple(elem)
         elif elem is not None:
             res = res + (elem,)
     return res
 
+
 # example input
-a = [1, 2, 3]
+a = [1, 2, 3, 'prince']
 b = 6
 c = 'zhaba'
 d = [[1, 2], [3, 4]]
+e = {1: 2, 3: 4}
 
-for _ in merge_elems(a, b, c, d):
+for _ in merge_elems(a, b, c, d, e):
     print(_, end=' ')
 
 # output: 1 2 3 6 z h a b a 1 2 3 4
+# output: 1 2 3 p r i n c e 6 z h a b a 1 2 3 4 1 3 2 4
 
 # 2. Implement a map-like function that returns an iterator 
 # (extra functionality: if arg function can't be applied, return element as is + text exception)
@@ -45,9 +53,7 @@ def map_like(fun, *elems):
             res.append(fun(el))
         except:
             res.append('{}: {}'.format(el, sys.exc_info()[1]))
-
-    return res
-    # pass
+    yield res
 
 
 # example input
