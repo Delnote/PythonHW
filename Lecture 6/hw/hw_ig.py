@@ -4,13 +4,9 @@ import sys
 
 
 def merge_elems(*elems):
-    return flatten_data(elems)
-
-
-def flatten_data(data):
-    for elem in data:
+    for elem in elems:
         if isinstance(elem, (tuple, list)):
-            yield from flatten_data(elem)
+            yield from merge_elems(*elem)
         elif isinstance(elem, dict):
             yield from elem.keys()
             yield from elem.values()
