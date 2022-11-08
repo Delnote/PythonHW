@@ -20,7 +20,18 @@ class SizesEnum(Enum):
     XS = "XS"
 
 
-Should become:
+Should become: """
+
+
+class SimplifiedEnum(type):
+    def __new__(mcs, name, bases, dct):
+        cls_instance = super().__new__(mcs, name, bases, dct)
+        for key in dct.keys():
+            if key.endswith("__keys"):
+                for inst in dct.get(key):
+                    mcs.__setattr__(mcs, inst, inst)
+        return cls_instance
+
 
 class ColorsEnum(metaclass=SimplifiedEnum):
     __keys = ("RED", "BLUE", "ORANGE", "BLACK")
@@ -32,4 +43,3 @@ class SizesEnum(metaclass=SimplifiedEnum):
 
 assert ColorsEnum.RED == "RED"
 assert SizesEnum.XL == "XL"
-"""
