@@ -24,4 +24,4 @@ secret_sauce
 https://www.browserstack.com/guide/run-selenium-tests-using-selenium-chromedriver)
 
 ### РЕВЬЮ
-В качестве ревьюера, указывайте меня, пожалуйста (@VAlexandrov911)
+В качестве ревьюера указывайте меня, пожалуйста (@VAlexandrov911)
