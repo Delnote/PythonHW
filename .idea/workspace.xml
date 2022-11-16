@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="789936d3-248e-4751-a78e-7f9b40ed9144" name="Changes" comment="added lecture 10 hw 2">
-      <change afterPath="$PROJECT_DIR$/Lecture 13/hw/loginpage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lecture 13/hw/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="789936d3-248e-4751-a78e-7f9b40ed9144" name="Changes" comment="added lecture 10 hw 2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
