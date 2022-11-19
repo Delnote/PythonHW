@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="789936d3-248e-4751-a78e-7f9b40ed9144" name="Changes" comment="added lecture 10 hw 2" />
+    <list default="true" id="789936d3-248e-4751-a78e-7f9b40ed9144" name="Changes" comment="added lecture 14">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667873054074</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added lecture 14">
+      <created>1668636937734</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668636937734</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,6 +134,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added lecture 10 hw 1" />
     <MESSAGE value="added lecture 10 hw 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="added lecture 10 hw 2" />
+    <MESSAGE value="added lecture 14" />
+    <option name="LAST_COMMIT_MESSAGE" value="added lecture 14" />
   </component>
 </project>
