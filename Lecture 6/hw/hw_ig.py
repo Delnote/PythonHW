@@ -1,27 +1,47 @@
-# 1. Implement a function that flatten incoming data:
-# non-iterables and elements from iterables (any nesting depth should be supported)
-# function should return an iterator (generator function)
-# don't use third-party libraries
+# 1. Implement a function that flatten incoming data (non-iterables and elements from iterables) 
+# and returns an iterator
+import sys
+
 
 def merge_elems(*elems):
-    pass
+    for elem in elems:
+        if isinstance(elem, (tuple, list)):
+            yield from merge_elems(*elem)
+        elif isinstance(elem, dict):
+            yield from elem.keys()
+            yield from elem.values()
+        elif isinstance(elem, str):
+            yield from tuple(elem)
+        elif elem is not None:
+            yield elem
+
 
 # example input
-a = [1, 2, 3]
+a = [1, 2, 3, 'prince']
 b = 6
 c = 'zhaba'
 d = [[1, 2], [3, 4]]
+e = {1: 2, 3: 4}
 
-for _ in merge_elems(a, b, c, d):
+for _ in merge_elems(a, b, c, d, e):
     print(_, end=' ')
+print('\n')
 
 # output: 1 2 3 6 z h a b a 1 2 3 4
+# output: 1 2 3 p r i n c e 6 z h a b a 1 2 3 4 1 3 2 4
 
-# 2. Implement a map-like function that returns an iterator (generator function)
-# extra functionality: if arg function can't be applied, return element as is + text exception
+# 2. Implement a map-like function that returns an iterator 
+# (extra functionality: if arg function can't be applied, return element as is + text exception)
+
 
 def map_like(fun, *elems):
-    pass
+    for el in elems:
+        try:
+            hasattr(el, '__getitem__')
+            yield fun(el)
+        except:
+            yield '{}: {}'.format(el, sys.exc_info()[1])
+
 
 # example input
 a = [1, 2, 3]

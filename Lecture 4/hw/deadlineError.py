@@ -1,0 +1,2 @@
+class DeadlineError(Exception):
+    pass

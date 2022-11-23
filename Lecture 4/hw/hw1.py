@@ -8,7 +8,7 @@ Homework has a method, that tells if deadline has passed.
 Raises DeadlineError with "You are late" message if deadline has passed
 
 3. Teacher - can create homework with `create_homework`; check homework with `check_homework`.
-Any teacher can create or check any homework (even if it was created by one of colleagues).
+Any teacher.py can create or check any homework (even if it was created by one of colleagues).
 
 Homework are cached in dict-like structure named `homework_done`. Key is homework, values are 
 solutions. Each student can only have one homework solution.
