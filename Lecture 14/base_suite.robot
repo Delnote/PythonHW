@@ -14,14 +14,14 @@ ${PASSWORD}  testtest
 &{CART_PAGE}  cart_product=css:tr.success:nth-child(1)  product_title=css:tr.success:nth-child(1) td:nth-child(2)  product_price=css:tr.success:nth-child(1) td:nth-child(3)
 
 *** Test Cases ***
-#Login test
-#    [Documentation]  User can login
-#    Open Browser  ${URL}  ${Browser}
-#    Maximize Browser Window
-#    Open Login Form
-#    Validate Login Form
-#    login  ${LOGIN}  ${PASSWORD}
-#    Validate Logged In
+Login test
+    [Documentation]  User can login
+    Open Browser  ${URL}  ${Browser}
+    Maximize Browser Window
+    Open Login Form
+    Validate Login Form
+    login  ${LOGIN}  ${PASSWORD}
+    Validate Logged In
 
 Add Monitor To Cart test
     [Documentation]  User can add monitor to cart
