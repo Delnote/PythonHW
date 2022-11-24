@@ -4,7 +4,7 @@ from selenium import webdriver
 from pages import *
 
 base_url = 'https://www.demoblaze.com/'
-
+# presented as mockup for robot
 
 def test_login():
     driver = webdriver.Chrome()
