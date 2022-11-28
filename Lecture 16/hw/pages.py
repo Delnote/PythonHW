@@ -1,9 +1,9 @@
 from selenium.webdriver.common.by import By
 from seleniumpagefactory import PageFactory
+from constants import *
 
 
 class LoginPage(PageFactory):
-    ROBOT_LISTENER_API_VERSION = 2
 
     def __init__(self, driver):
         self.driver = driver
@@ -24,8 +24,8 @@ class LoginPage(PageFactory):
         assert self.submit.is_displayed()
 
     def do_login(self):
-        self.login.set_text("usertesttest")
-        self.password.set_text("testtest")
+        self.login.set_text(LOGIN)
+        self.password.set_text(PASSWORD)
         self.submit.click()
 
 
